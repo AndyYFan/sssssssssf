@@ -3,7 +3,7 @@ import java.util.*;
 public class Permutation{
 	List<ArrayList<Integer>>list = new ArrayList<>(); 
 
-	public static List<ArrayList<Integer>> permutation(int n){
+	public  List<ArrayList<Integer>> permutation(int n){
 		if(n == 0) return list;
 		//create 1 2 ... n
 		int[]nums = new int[n];
@@ -31,8 +31,22 @@ public class Permutation{
 				flag[i] = true;
 				temp.add(nums[i]);
 				dfs(temp,nums,flag,start+1,n);
+				flag[i] = false;
 				temp.remove(temp.size()-1);
 			}
 		}
+	}
+
+	public static void main(String[] args) {
+		int n = 3;
+		Permutation perm = new Permutation();
+		List<ArrayList<Integer>> sequence = perm.permutation(n);
+		for(ArrayList<Integer>seq:sequence){
+			for(int i:seq){
+				System.out.print(i + " ");				
+			}
+			System.out.println("");
+		}
+
 	}
 }
